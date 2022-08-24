@@ -43,6 +43,12 @@
             -moz-appearance: none;
             appearance: none;
         }
+        &-option {
+            padding: 10px;
+            font-size: 14px;
+            line-height: 17px;
+            color: #000000;
+        }
     }
 }
 .active {

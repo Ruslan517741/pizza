@@ -15,9 +15,9 @@ const MainPage = () => {
                 <div className="pizzaFilters__panel">
                     <div className="pizzaFilters__panel-text">Сортировка по:</div>
                     <select id="select" className="pizzaFilters__panel-select">
-                        <option value="popularity" selected>популярности</option>
-                        <option value="price">цене</option>
-                        <option value="alphabet">алфавиту</option>
+                        <option className="pizzaFilters__panel-option" value="popularity" selected>популярности</option>
+                        <option className="pizzaFilters__panel-option" value="price">цене</option>
+                        <option className="pizzaFilters__panel-option" value="alphabet">алфавиту</option>
                     </select>
                 </div>
             </div>
