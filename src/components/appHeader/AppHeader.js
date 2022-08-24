@@ -5,7 +5,7 @@ import basket from '../../resources/img/basket.svg'
 
 const AppHeader = () => {
     return (
-        <header className='app__header'>
+        <header className='appHeader'>
             <div className='logo'>
                 <img className='logo__img' src={logo} alt="logo" />
                 <div className="logo__text">
