@@ -1,6 +1,6 @@
 import './appHeader.scss';
 import logo from '../../resources/img/logo.png'
-import basket from '../../resources/img/basket.png'
+import basket from '../../resources/img/basket.svg'
 
 
 const AppHeader = () => {
@@ -13,8 +13,12 @@ const AppHeader = () => {
                     <div className="logo__motto">самая вкусная пицца во вселенной</div>
                 </div>
             </div>
-            <a href="#" className="header__button">500 | 3 <img src={basket} alt="basket" /></a>
-            
+            <a href="#" className="header__button">
+                <div className='price'>500 грн</div>
+                <div className='separator'></div>
+                <img src={basket} alt="basket"/>
+                <div className='goods'>3</div>
+            </a>
         </header>
     )
 }

@@ -1,0 +1,68 @@
+.app__header {
+    padding: 50px 40px 35px 70px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #F7F7F7;;
+}
+.logo {
+    display: flex;
+    &__img {
+        margin-right: 17px;
+        width: 38px;
+        height: 38px;
+    }
+    &__title {
+        font-family: 'Proxima Nova';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 20px;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+
+        color: #181818;
+    }
+    &__motto {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #7B7B7B;
+    }
+}
+.header__button {
+    display: flex;
+    width: 150px;
+    height: 50px;
+    background: #FE5F1E;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+}
+.separator {
+    width: 2px;
+    height: 25px;
+    margin: 0 13px;
+    
+
+    background: rgba(255, 255, 255, 0.25);
+}
+.goods {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    margin-left: 8px;
+
+    color: #FFFFFF;
+}
