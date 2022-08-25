@@ -1,5 +1,5 @@
 import AppHeader from '../appHeader/AppHeader';
-import MainPage from '../mainPage/MainPage';
+import Filter from '../filter/Filter';
 
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
     <div className="app">
       <div className="container">
         <AppHeader/>
-        <MainPage/>
+        <Filter/>
       </div>
       
     </div>

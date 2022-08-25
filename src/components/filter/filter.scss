@@ -1,4 +1,4 @@
-.mainPage {
+.filter {
     padding: 40px 50px 95px 50px;
 }
 .pizzaFilters {
@@ -20,8 +20,12 @@
         line-height: 19px;
         text-align: center;
         letter-spacing: 0.015em;
+        &:hover {
+            background: #d6d6d6;
+        }
     }
     &__panel {
+        position: relative;
         display: flex;
         align-items: center;
         &-text {
@@ -42,16 +46,45 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
+            cursor: pointer;
+        }
+        &-modal {
+            position: absolute;
+            display: block;
+            width: 132px;
+            height: 136px;
+            padding: 13px 0;
+            left: 87px;
+            top: 38px;
+
+            background: #FFFFFF;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+            border-radius: 10px;
         }
         &-option {
+            display: block;
+            width: inherit;
+            text-align: left;
+            background: #FFFFFF;
+            border: none;
             padding: 10px;
             font-size: 14px;
             line-height: 17px;
             color: #000000;
+            &:hover {
+                background: rgba(255, 106, 48, 0.05);
+            }
         }
     }
 }
-.active {
+.activeType {
     background: #282828;
     color: #FFFFFF;
+}
+.activeFilter {
+    background: rgba(254, 95, 30, 0.05);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FE5F1E;
 }
