@@ -1,5 +1,6 @@
 import AppHeader from '../appHeader/AppHeader';
 import Filter from '../filter/Filter';
+import PizzaList from '../pizzaList/PizzaList';
 
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
       <div className="container">
         <AppHeader/>
         <Filter/>
+        <PizzaList/>
       </div>
       
     </div>
