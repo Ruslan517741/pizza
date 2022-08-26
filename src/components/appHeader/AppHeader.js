@@ -1,6 +1,6 @@
 import './appHeader.scss';
 import logo from '../../resources/img/logo.png'
-import basket from '../../resources/img/basket.svg'
+import basketButton from '../../resources/img/basketButton.svg'
 
 
 const AppHeader = () => {
@@ -16,7 +16,7 @@ const AppHeader = () => {
             <a href="#" className="header__button">
                 <div className='price'>500 грн</div>
                 <div className='separator'></div>
-                <img src={basket} alt="basket"/>
+                <img src={basketButton} alt="basket"/>
                 <div className='goods'>3</div>
             </a>
         </header>

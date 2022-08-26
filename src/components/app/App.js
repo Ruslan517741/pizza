@@ -1,6 +1,7 @@
 import AppHeader from '../appHeader/AppHeader';
-import Filter from '../filter/Filter';
-import PizzaList from '../pizzaList/PizzaList';
+import MainPage from '../mainPage/MainPage';
+import Basket from '../basket/Basket';
+
 
 
 const App = () => {
@@ -8,8 +9,8 @@ const App = () => {
     <div className="app">
       <div className="container">
         <AppHeader/>
-        <Filter/>
-        <PizzaList/>
+        {/* <MainPage/> */}
+        <Basket/>
       </div>
       
     </div>

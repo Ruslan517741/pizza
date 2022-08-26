@@ -1,0 +1,22 @@
+.basket {
+    padding: 95px 260px 130px 260px;
+    &__title {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+        color: #000000;
+        img {
+            margin-right: 17px;
+        }
+    }
+    &__item {
+        margin-top: 30px;
+        border-top: 1px solid #F7F7F7;
+        &-wrapper {
+            padding-top: 30px;
+            display: grid;
+            grid-template-columns: 350px 102px 60px 32px;
+        }
+    }
+}
