@@ -3,17 +3,21 @@
     &__header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         &-title {
+            display: flex;
+            align-items: center;
             font-style: normal;
             font-weight: 700;
             font-size: 32px;
             line-height: 39px;
-            color: #000000;
             img {
                 margin-right: 17px;
             }
         }
         &-clearBasketButton {
+            display: flex;
+            align-items: center;
             width: 169px;
             height: 23px;
             border: none;
@@ -23,9 +27,12 @@
             font-size: 16px;
             line-height: 19px;
             color: #B6B6B6;
+            cursor: pointer;
+            img {
+                margin: 0 7px 5px 0;
+            }
         }
     }
-    
     &__item {
         margin-top: 30px;
         border-top: 1px solid #F7F7F7;
@@ -33,7 +40,6 @@
             padding-top: 30px;
             display: grid;
             grid-template-columns: 350px 102px 150px 32px;
-            /* column-gap: 80px; */
             justify-content: space-between;
             align-items: center;
         }
@@ -53,7 +59,6 @@
             font-size: 22px;
             line-height: 27px;
             letter-spacing: 0.01em;
-            color: #000000;
         }
         &-type {
             font-style: normal;
@@ -78,9 +83,9 @@
             background: #FFFFFF;
             border: 2px solid #FE5F1E;
             border-radius: 100%;
+            cursor: pointer;
             img {
                 width: 9.6px;
-
             }
         }
         &-number {
@@ -89,7 +94,6 @@
             font-size: 22px;
             line-height: 27px;
             letter-spacing: 0.01em;
-            color: #000000;
         }
         &-price {
             text-align: right;
@@ -98,7 +102,6 @@
             font-size: 22px;
             line-height: 27px;
             letter-spacing: 0.01em;
-            color: #000000;
         }
         &-close {
             width: 32px;
@@ -108,9 +111,72 @@
             background: #FFFFFF;
             border: 2px solid #D7D7D7;
             border-radius: 100%;
+            cursor: pointer;
             img {
                 width: 10.6px;
             }
         }
     }
+    &__total {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        &-amountOfPizzas {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 27px;
+            letter-spacing: 0.01em;
+            span {
+                font-weight: 700;  
+            }
+        }
+        &-orderPrice {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 27px;
+            letter-spacing: 0.01em;
+            span {
+                font-weight: 700;
+                color:#FE5F1E;
+            }
+        }
+    }
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        &-back {
+            width: 211px;
+            height: 55px;
+            border: 1px solid #D3D3D3;
+            background: #FFFFFF;
+            border-radius: 30px;
+
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            color: #CACACA;
+            cursor: pointer;
+        }
+        &-pay {
+            width: 211px;
+            height: 55px;
+            background: #FE5F1E;
+            border-radius: 30px;
+            border: none;
+
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+    }
+
 }

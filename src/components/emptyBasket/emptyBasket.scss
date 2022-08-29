@@ -1,0 +1,44 @@
+.emptyBasket {
+    padding: 163px 397px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__title {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+        letter-spacing: 0.01em;
+    }
+    &__prompt {
+        margin-top: 10px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        text-align: center;
+        letter-spacing: 0.01em;
+        color: #777777;
+    }
+    &__img {
+        width: 300px;
+        height: 255px;
+        margin-top: 47px;
+    }
+    &__backButton {
+        margin-top: 74px;
+        width: 210px;
+        height: 46px;
+        background: #282828;
+        border-radius: 30px;
+        border: none;
+
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        letter-spacing: 0.015em;
+        color: #FFFFFF;
+    }
+}

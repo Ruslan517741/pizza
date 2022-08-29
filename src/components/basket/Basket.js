@@ -1,4 +1,5 @@
 import './basket.scss';
+
 import basket from '../../resources/img/basket.png';
 import pizzaChiz from "../../resources/img/pizzaChiz.png";
 import chick from "../../resources/img/chick.png";
@@ -7,6 +8,7 @@ import plus from "../../resources/img/plus.png";
 import minus from "../../resources/img/minus.png";
 import cross from "../../resources/img/cross.png";
 import clearBasket from "../../resources/img/clearBasket.svg";
+import leftArrow from "../../resources/img/leftArrow.svg";
 
 
 const Basket = () => {
@@ -96,7 +98,18 @@ const Basket = () => {
                         </button>
                     </div>
                 </div>
-                <div className="basket__item-amountOfPizzas"></div>
+                <div className="basket__total">
+                    <div className="basket__total-amountOfPizzas">Всего пицц: <span>3 шт</span></div>
+                    <div className="basket__total-orderPrice">Сумма заказа: <span>900 грн</span></div>
+                </div>
+                <div className="basket__buttons">
+                    <button className="basket__buttons-back">
+                        <img src={leftArrow} alt="leftArrow" />
+                        Вернуться назад
+                    </button>
+                    <button className="basket__buttons-pay">Оплатить сейчас</button>
+                </div>
+                
 
             </div>
         </div>

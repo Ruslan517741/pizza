@@ -1,6 +1,7 @@
 import AppHeader from '../appHeader/AppHeader';
 import MainPage from '../mainPage/MainPage';
 import Basket from '../basket/Basket';
+import EmptyBasket from '../emptyBasket/EmptyBasket';
 
 
 
@@ -10,7 +11,8 @@ const App = () => {
       <div className="container">
         <AppHeader/>
         {/* <MainPage/> */}
-        <Basket/>
+        {/* <Basket/> */}
+        <EmptyBasket/>
       </div>
       
     </div>
