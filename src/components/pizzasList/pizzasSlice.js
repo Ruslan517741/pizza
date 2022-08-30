@@ -3,6 +3,7 @@ import { useHttp } from '../../hooks/http.hooks';
 
 const initialState = {
     pizzas: [],
+    activeFilter: "all",
     pizzasLoadingStatus: 'idle'
 }
 
@@ -17,7 +18,11 @@ export const fetchPizzas = createAsyncThunk(
 const pizzasSlice = createSlice({
     name: 'pizzas',
     initialState,
-    reducers: {},
+    reducers: {
+        activeFilterChanged: (state, action) => {
+            state.activeFilter = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchPizzas.pending, state => {state.pizzasLoadingStatus = 'loading'})

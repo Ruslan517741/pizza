@@ -7,14 +7,23 @@ import { fetchPizzas } from './pizzasSlice';
 import Spinner from '../spinner/Spinner';
 
 import './pizzasList.scss';
-import pizzaChiz from "../../resources/img/pizzaChiz.png";
-import cheesy from "../../resources/img/cheesy.png";
-import chick from "../../resources/img/chick.png";
-import shrimps from "../../resources/img/shrimps.png";
 import plus from "../../resources/img/plus.png";
 
 
 const PizzasList = () => {
+    const filteredPizzasSelector = createSelector(
+        (state) => state.pizzas.activeFilter,
+        (state) => state.pizzas.pizzas,
+        (filter, pizzas) => {
+            if (filter === 'all') {
+                return pizzas;
+            } else {
+                return pizzas.filter(item => item.category === filter);
+            }
+        }
+    )
+
+
     const pizzas = useSelector(state => state.pizzas.pizzas);
     const pizzasLoadingStatus = useSelector(state => state.pizzas.pizzasLoadingStatus);
     const dispatch = useDispatch();
@@ -32,7 +41,6 @@ const PizzasList = () => {
     }
 
     const renderPizzasList = (arr) => { 
-
         return arr.map(item => {
             return (
                 <div key={item.id} className="pizzasList__item">

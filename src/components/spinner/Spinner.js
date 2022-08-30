@@ -1,7 +1,9 @@
+import spinner from "../../resources/img/spinner.gif";
+
 const Spinner = () => {
     return (
-        <div className="spinner-border mx-auto mt-5" role="status">
-            <span className="visually-hidden">Loading...</span>
+        <div className="spinner" role="status">
+            <img src={spinner} alt="spinner" className="spinner" style={{width:'500px', margin: '0 auto', background: 'none', display: 'block'}}/>
         </div>
     )
 }
