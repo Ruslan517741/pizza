@@ -10,9 +10,9 @@ const App = () => {
     <div className="app">
       <div className="container">
         <AppHeader/>
-        {/* <MainPage/> */}
+        <MainPage/>
         {/* <Basket/> */}
-        <EmptyBasket/>
+        {/* <EmptyBasket/> */}
       </div>
       
     </div>

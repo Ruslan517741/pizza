@@ -4,7 +4,7 @@ import "./filter.scss";
 const Filter = () => {
     const [modalDisplay, setModalDisplay] = useState('none')
 
-    const toggleFilterPanelModal = () => {
+    const toggleSortModalPanel = () => {
         setModalDisplay(modalDisplay === 'none' ? 'block' : 'none');
         console.log(modalDisplay);
     }
@@ -22,7 +22,7 @@ const Filter = () => {
                 </div>
                 <div className="pizzaFilters__panel">
                     <div className="pizzaFilters__panel-text">Сортировка по:</div>
-                    <div className="pizzaFilters__panel-select" onClick={() => toggleFilterPanelModal()}>популярности</div>
+                    <div className="pizzaFilters__panel-select" onClick={() => toggleSortModalPanel()}>популярности</div>
                     <div className="pizzaFilters__panel-modal" style={{display: modalDisplay}}>
                         <button className="pizzaFilters__panel-option activeFilter" value="popularity">популярности</button>
                         <button className="pizzaFilters__panel-option" value="price">цене</button>
