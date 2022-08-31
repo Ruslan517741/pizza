@@ -80,6 +80,9 @@
 .activeType {
     background: #282828;
     color: #FFFFFF;
+    &:hover {
+        background: #282828;
+    }
 }
 .activeFilter {
     background: rgba(254, 95, 30, 0.05);

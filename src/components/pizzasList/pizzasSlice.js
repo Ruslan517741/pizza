@@ -39,7 +39,5 @@ const {actions, reducer} = pizzasSlice;
 
 export default reducer;
 export const {
-    pizzasFetching,
-    pizzasFetched,
-    pizzasFetchingError
+    activeFilterChanged
 } = actions;

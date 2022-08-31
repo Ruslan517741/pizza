@@ -21,10 +21,11 @@ const PizzasList = () => {
                 return pizzas.filter(item => item.category === filter);
             }
         }
-    )
-
+    );
 
     const pizzas = useSelector(state => state.pizzas.pizzas);
+    const filteredPizzas = useSelector(filteredPizzasSelector)
+    const activeFilter = useSelector(state => state.pizzas.activeFilter);
     const pizzasLoadingStatus = useSelector(state => state.pizzas.pizzasLoadingStatus);
     const dispatch = useDispatch();
 
@@ -70,7 +71,7 @@ const PizzasList = () => {
         })
     }
     
-    const elements = renderPizzasList(pizzas);
+    const elements = renderPizzasList(filteredPizzas);
     return (
         <div className="pizzasList">
             <div className="pizzasList__typeFilter">Все пиццы</div>
