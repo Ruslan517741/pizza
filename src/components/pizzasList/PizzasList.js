@@ -37,6 +37,7 @@ const PizzasList = () => {
                         return pizzas.filter(item => item.category !== filter).sort((a, b) => b.price - a.price);
                     case 'alphabet':
                         return pizzas.filter(item => item.category !== filter).sort((a, b) => b - a);
+
                 }
             } else {
                 switch (sortFilter) {

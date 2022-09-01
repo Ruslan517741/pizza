@@ -4,7 +4,7 @@ import { useHttp } from '../../hooks/http.hooks';
 const initialState = {
     pizzas: [],
     activeFilter: "all",
-    activeSortFilter: "price",
+    activeSortFilter: "popularity",
     pizzasLoadingStatus: 'idle'
 }
 
@@ -37,6 +37,8 @@ const pizzasSlice = createSlice({
                 case 'alphabet':
                     state.pizzas = state.pizzas.sort((a, b) => b - a);
                     break;
+                default: 
+                    console.log('Ошибка сортировки');
             }
         }
     },
