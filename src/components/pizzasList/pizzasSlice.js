@@ -4,6 +4,7 @@ import { useHttp } from '../../hooks/http.hooks';
 const initialState = {
     pizzas: [],
     activeFilter: "all",
+    activeSortFilter: "price",
     pizzasLoadingStatus: 'idle'
 }
 
@@ -21,6 +22,22 @@ const pizzasSlice = createSlice({
     reducers: {
         activeFilterChanged: (state, action) => {
             state.activeFilter = action.payload;
+        },
+        activeSortFilterChanged: (state, action) => {
+            state.activeSortFilter = action.payload;
+        },
+        sortingPizzas: (state) => {
+            switch (state.activeSortFilter) {
+                case 'popularity':
+                    state.pizzas = state.pizzas.sort((a, b) => b.rating - a.rating);
+                    break;
+                case 'price':
+                    state.pizzas = state.pizzas.sort((a, b) => b.price - a.price);
+                    break;
+                case 'alphabet':
+                    state.pizzas = state.pizzas.sort((a, b) => b - a);
+                    break;
+            }
         }
     },
     extraReducers: (builder) => {
@@ -39,5 +56,7 @@ const {actions, reducer} = pizzasSlice;
 
 export default reducer;
 export const {
-    activeFilterChanged
+    activeFilterChanged,
+    activeSortFilterChanged,
+    sortingPizzas
 } = actions;

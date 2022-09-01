@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 
-import { fetchPizzas } from './pizzasSlice';
+import { fetchPizzas, sortingPizzas } from './pizzasSlice';
 import Spinner from '../spinner/Spinner';
 
 import './pizzasList.scss';
@@ -11,26 +11,54 @@ import plus from "../../resources/img/plus.png";
 
 
 const PizzasList = () => {
-    const filteredPizzasSelector = createSelector(
+    /* const filteredPizzasSelector = createSelector(
         (state) => state.pizzas.activeFilter,
+        (state) => state.pizzas.activeSortFilter,
         (state) => state.pizzas.pizzas,
-        (filter, pizzas) => {
+        (filter, sortFilter pizzas) => {
             if (filter === 'all') {
                 return pizzas;
             } else {
                 return pizzas.filter(item => item.category === filter);
             }
         }
+    ); */
+
+    const filteredPizzasSelector = createSelector(
+        (state) => state.pizzas.activeFilter,
+        (state) => state.pizzas.activeSortFilter,
+        (state) => state.pizzas.pizzas,
+        (filter, sortFilter, pizzas) => {
+            if (filter === 'all') {
+                switch (sortFilter) {
+                    case 'popularity':
+                        return pizzas.filter(item => item.category !== filter).sort((a, b) => b.rating - a.rating);
+                    case 'price':
+                        return pizzas.filter(item => item.category !== filter).sort((a, b) => b.price - a.price);
+                    case 'alphabet':
+                        return pizzas.filter(item => item.category !== filter).sort((a, b) => b - a);
+                }
+            } else {
+                switch (sortFilter) {
+                    case 'popularity':
+                        return pizzas.filter(item => item.category === filter).sort((a, b) => b.rating - a.rating);
+                    case 'price':
+                        return pizzas.filter(item => item.category === filter).sort((a, b) => b.price - a.price);
+                    case 'alphabet':
+                        return pizzas.filter(item => item.category === filter).sort((a, b) => b - a);
+                }
+            }
+        }
     );
 
     const pizzas = useSelector(state => state.pizzas.pizzas);
     const filteredPizzas = useSelector(filteredPizzasSelector)
-    const activeFilter = useSelector(state => state.pizzas.activeFilter);
     const pizzasLoadingStatus = useSelector(state => state.pizzas.pizzasLoadingStatus);
     const dispatch = useDispatch();
 
     useEffect (() => {
         dispatch(fetchPizzas());
+        dispatch(sortingPizzas());
         
     }, []);
     console.log(pizzas);
