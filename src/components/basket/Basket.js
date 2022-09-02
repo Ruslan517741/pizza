@@ -1,3 +1,6 @@
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+
 import './basket.scss';
 
 import basket from '../../resources/img/basket.png';
@@ -11,9 +14,18 @@ import clearBasket from "../../resources/img/clearBasket.svg";
 import leftArrow from "../../resources/img/leftArrow.svg";
 
 
+
+
 const Basket = () => {
     return (
         <div className="basket">
+            <Helmet>
+                <meta
+                    name="description"
+                    content="Basket with your pizzas"
+                    />
+                 <title>Basket</title>   
+            </Helmet>
             <div className="basket__header">
                 <div className="basket__header-title">
                     <img src={basket} alt="basket" />
@@ -103,10 +115,10 @@ const Basket = () => {
                     <div className="basket__total-orderPrice">Сумма заказа: <span>900 грн</span></div>
                 </div>
                 <div className="basket__buttons">
-                    <button className="basket__buttons-back">
+                    <Link to="/" className="basket__buttons-back">
                         <img src={leftArrow} alt="leftArrow" />
                         Вернуться назад
-                    </button>
+                    </Link>
                     <button className="basket__buttons-pay">Оплатить сейчас</button>
                 </div>
                 

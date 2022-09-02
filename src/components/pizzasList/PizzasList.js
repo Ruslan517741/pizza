@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 
 import { fetchPizzas, sortingPizzas } from './pizzasSlice';
+import { addPizza } from '../basket/basketSlice';
 import Spinner from '../spinner/Spinner';
 
 import './pizzasList.scss';
@@ -13,7 +14,6 @@ import plus from "../../resources/img/plus.png";
 const PizzasList = () => {
     /* const filteredPizzasSelector = createSelector(
         (state) => state.pizzas.activeFilter,
-        (state) => state.pizzas.activeSortFilter,
         (state) => state.pizzas.pizzas,
         (filter, sortFilter pizzas) => {
             if (filter === 'all') {
@@ -60,9 +60,7 @@ const PizzasList = () => {
     useEffect (() => {
         dispatch(fetchPizzas());
         dispatch(sortingPizzas());
-        
-    }, []);
-    console.log(pizzas);
+    }, []);   
 
     if (pizzasLoadingStatus === "loading") {
         return <Spinner/>;
@@ -89,7 +87,7 @@ const PizzasList = () => {
                         </div>
                         <div className="pizzasList__item-wrapper">
                             <div className="pizzasList__item-price">от {item.price}грн</div>
-                            <button className="pizzasList__item-addButton">
+                            <button className="pizzasList__item-addButton" onClick={() => {console.log(item)}}>
                                 <img src={plus} alt="plus" />
                                 Добавить
                             </button>
@@ -106,182 +104,6 @@ const PizzasList = () => {
             <div className="pizzasList__typeFilter">Все пиццы</div>
             <div className="pizzasList__items">
                 {elements}
-                {/* <div className="pizzasList__item">
-                    <img src={pizzaChiz} alt="pizza" className="pizzasList__item-img" />
-                    <div className="pizzasList__item-title">Чизбургер-пицца</div>
-                    <div className="pizzasList__item-selectMenu">
-                        <div className="pizzasType">
-                            <button className="pizzasType__item pizzaType__item-active">тонкое</button>
-                            <button className="pizzasType__item">традиционное</button>
-                        </div>
-                        <div className="pizzasSize">
-                            <button className="pizzasSize__item pizzasSize__item-active">26 см.</button>
-                            <button className="pizzasSize__item">30 см.</button>
-                            <button className="pizzasSize__item">40 см.</button>
-                        </div>
-                    </div>
-                    <div className="pizzasList__item-wrapper">
-                        <div className="pizzasList__item-price">от 395грн</div>
-                        <button className="pizzasList__item-addButton">
-                            <img src={plus} alt="plus" />
-                            Добавить
-                        </button>
-                    </div>
-                </div>
-                <div className="pizzasList__item">
-                    <img src={cheesy} alt="pizza" className="pizzasList__item-img" />
-                    <div className="pizzasList__item-title">Сырная</div>
-                    <div className="pizzasList__item-selectMenu">
-                        <div className="pizzaType">
-                            <button className="pizzasType__item pizzasType__item-active">тонкое</button>
-                            <button className="pizzasType__item">традиционное</button>
-                        </div>
-                        <div className="pizzasSize">
-                            <button className="pizzasSize__item pizzasSize__item-active">26 см.</button>
-                            <button className="pizzasSize__item">30 см.</button>
-                            <button className="pizzasSize__item">40 см.</button>
-                        </div>
-                    </div>
-                    <div className="pizzasList__item-wrapper">
-                        <div className="pizzasList__item-price">от 290грн</div>
-                        <button className="pizzasList__item-addButton">
-                            <img src={plus} alt="plus" />
-                            Добавить
-                        </button>
-                    </div>
-                </div>
-                <div className="pizzasList__item">
-                    <img src={chick} alt="pizza" className="pizzasList__item-img" />
-                    <div className="pizzasList__item-title">Сырный ципленок</div>
-                    <div className="pizzasList__item-selectMenu">
-                        <div className="pizzasType">
-                            <button className="pizzasType__item pizzasType__item-active">тонкое</button>
-                            <button className="pizzasType__item">традиционное</button>
-                        </div>
-                        <div className="pizzasSize">
-                            <button className="pizzasSize__item pizzasSize__item-active">26 см.</button>
-                            <button className="pizzasSize__item">30 см.</button>
-                            <button className="pizzasSize__item">40 см.</button>
-                        </div>
-                    </div>
-                    <div className="pizzasList__item-wrapper">
-                        <div className="pizzasList__item-price">от 385грн</div>
-                        <button className="pizzasList__item-addButton">
-                            <img src={plus} alt="plus" />
-                            Добавить
-                        </button>
-                    </div>
-                </div>
-                <div className="pizzasList__item">
-                    <img src={shrimps} alt="pizza" className="pizzasList__item-img" />
-                    <div className="pizzasList__item-title">Креветки по-азиатски</div>
-                    <div className="pizzasList__item-selectMenu">
-                        <div className="pizzasType">
-                            <button className="pizzasType__item pizzasType__item-active">тонкое</button>
-                            <button className="pizzasType__item">традиционное</button>
-                        </div>
-                        <div className="pizzasSize">
-                            <button className="pizzasSize__item pizzasSize__item-active">26 см.</button>
-                            <button className="pizzasSize__item">30 см.</button>
-                            <button className="pizzasSize__item">40 см.</button>
-                        </div>
-                    </div>
-                    <div className="pizzasList__item-wrapper">
-                        <div className="pizzasList__item-price">от 450грн</div>
-                        <button className="pizzasList__item-addButton">
-                            <img src={plus} alt="plus" />
-                            Добавить
-                        </button>
-                    </div>
-                </div>
-                <div className="pizzasList__item">
-                    <img src={pizzaChiz} alt="pizza" className="pizzasList__item-img" />
-                    <div className="pizzasList__item-title">Чизбургер-пицца</div>
-                    <div className="pizzasList__item-selectMenu">
-                        <div className="pizzasType">
-                            <button className="pizzasType__item pizzasType__item-active">тонкое</button>
-                            <button className="pizzasType__item">традиционное</button>
-                        </div>
-                        <div className="pizzasSize">
-                            <button className="pizzasSize__item pizzasSize__item-active">26 см.</button>
-                            <button className="pizzasSize__item">30 см.</button>
-                            <button className="pizzasSize__item">40 см.</button>
-                        </div>
-                    </div>
-                    <div className="pizzasList__item-wrapper">
-                        <div className="pizzasList__item-price">от 395грн</div>
-                        <button className="pizzasList__item-addButton">
-                            <img src={plus} alt="plus" />
-                            Добавить
-                        </button>
-                    </div>
-                </div>
-                <div className="pizzasList__item">
-                    <img src={cheesy} alt="pizza" className="pizzasList__item-img" />
-                    <div className="pizzasList__item-title">Сырная</div>
-                    <div className="pizzasList__item-selectMenu">
-                        <div className="pizzasType">
-                            <button className="pizzasType__item pizzasType__item-active">тонкое</button>
-                            <button className="pizzasType__item">традиционное</button>
-                        </div>
-                        <div className="pizzasSize">
-                            <button className="pizzasSize__item pizzasSize__item-active">26 см.</button>
-                            <button className="pizzasSize__item">30 см.</button>
-                            <button className="pizzasSize__item">40 см.</button>
-                        </div>
-                    </div>
-                    <div className="pizzasList__item-wrapper">
-                        <div className="pizzasList__item-price">от 290грн</div>
-                        <button className="pizzasList__item-addButton">
-                            <img src={plus} alt="plus" />
-                            Добавить
-                        </button>
-                    </div>
-                </div>
-                <div className="pizzasList__item">
-                    <img src={chick} alt="pizza" className="pizzasList__item-img" />
-                    <div className="pizzasList__item-title">Сырный ципленок</div>
-                    <div className="pizzasList__item-selectMenu">
-                        <div className="pizzasType">
-                            <button className="pizzasType__item pizzasType__item-active">тонкое</button>
-                            <button className="pizzasType__item">традиционное</button>
-                        </div>
-                        <div className="pizzasSize">
-                            <button className="pizzasSize__item pizzasSize__item-active">26 см.</button>
-                            <button className="pizzasSize__item">30 см.</button>
-                            <button className="pizzasSize__item">40 см.</button>
-                        </div>
-                    </div>
-                    <div className="pizzasList__item-wrapper">
-                        <div className="pizzasList__item-price">от 385грн</div>
-                        <button className="pizzasList__item-addButton">
-                            <img src={plus} alt="plus" />
-                            Добавить
-                        </button>
-                    </div>
-                </div>
-                <div className="pizzasList__item">
-                    <img src={shrimps} alt="pizza" className="pizzasList__item-img" />
-                    <div className="pizzasList__item-title">Креветки по-азиатски</div>
-                    <div className="pizzasList__item-selectMenu">
-                        <div className="pizzasType">
-                            <button className="pizzasType__item pizzasType__item-active">тонкое</button>
-                            <button className="pizzasType__item">традиционное</button>
-                        </div>
-                        <div className="pizzasSize">
-                            <button className="pizzasSize__item pizzasSize__item-active">26 см.</button>
-                            <button className="pizzasSize__item">30 см.</button>
-                            <button className="pizzasSize__item">40 см.</button>
-                        </div>
-                    </div>
-                    <div className="pizzasList__item-wrapper">
-                        <div className="pizzasList__item-price">от 450грн</div>
-                        <button className="pizzasList__item-addButton">
-                            <img src={plus} alt="plus" />
-                            Добавить
-                        </button>
-                    </div>
-                </div> */}
             </div>
         </div>
     )

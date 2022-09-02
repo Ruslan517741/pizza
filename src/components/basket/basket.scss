@@ -148,19 +148,25 @@
         justify-content: space-between;
         margin-top: 40px;
         &-back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 211px;
             height: 55px;
             border: 1px solid #D3D3D3;
             background: #FFFFFF;
             border-radius: 30px;
-
+            
             font-style: normal;
             font-weight: 400;
             font-size: 16px;
             line-height: 19px;
-            text-align: center;
             color: #CACACA;
+            text-decoration: none;
             cursor: pointer;
+            img {
+                margin-right: 10px;
+            }
         }
         &-pay {
             width: 211px;
