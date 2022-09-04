@@ -1,9 +1,8 @@
-import { useHttp } from '../../hooks/http.hooks';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 
-import { fetchPizzas, sortingPizzas } from './pizzasSlice';
+import { fetchPizzas } from './pizzasSlice';
 import { addPizza } from '../basket/basketSlice';
 import Spinner from '../spinner/Spinner';
 
@@ -36,8 +35,12 @@ const PizzasList = () => {
                     case 'price':
                         return pizzas.filter(item => item.category !== filter).sort((a, b) => b.price - a.price);
                     case 'alphabet':
-                        return pizzas.filter(item => item.category !== filter).sort((a, b) => b - a);
-
+                        return pizzas.filter(item => item.category !== filter).sort((a, b) => {
+                            if (a.name < b.name) return -1
+                            if (a.name > b.name) return 1
+                            return 0;
+                        });
+                    default: {}
                 }
             } else {
                 switch (sortFilter) {
@@ -46,20 +49,23 @@ const PizzasList = () => {
                     case 'price':
                         return pizzas.filter(item => item.category === filter).sort((a, b) => b.price - a.price);
                     case 'alphabet':
-                        return pizzas.filter(item => item.category === filter).sort((a, b) => b - a);
+                        return pizzas.filter(item => item.category === filter).sort((a, b) => {
+                            if (a.name < b.name) return -1
+                            if (a.name > b.name) return 1
+                            return 0;
+                        });
+                    default: {}
                 }
             }
         }
     );
 
-    const pizzas = useSelector(state => state.pizzas.pizzas);
     const filteredPizzas = useSelector(filteredPizzasSelector)
     const pizzasLoadingStatus = useSelector(state => state.pizzas.pizzasLoadingStatus);
     const dispatch = useDispatch();
 
     useEffect (() => {
         dispatch(fetchPizzas());
-        dispatch(sortingPizzas());
     }, []);   
 
     if (pizzasLoadingStatus === "loading") {

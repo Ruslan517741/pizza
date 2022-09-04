@@ -25,21 +25,6 @@ const pizzasSlice = createSlice({
         },
         activeSortFilterChanged: (state, action) => {
             state.activeSortFilter = action.payload;
-        },
-        sortingPizzas: (state) => {
-            switch (state.activeSortFilter) {
-                case 'popularity':
-                    state.pizzas = state.pizzas.sort((a, b) => b.rating - a.rating);
-                    break;
-                case 'price':
-                    state.pizzas = state.pizzas.sort((a, b) => b.price - a.price);
-                    break;
-                case 'alphabet':
-                    state.pizzas = state.pizzas.sort((a, b) => b - a);
-                    break;
-                default: 
-                    console.log('Ошибка сортировки');
-            }
         }
     },
     extraReducers: (builder) => {
@@ -59,6 +44,5 @@ const {actions, reducer} = pizzasSlice;
 export default reducer;
 export const {
     activeFilterChanged,
-    activeSortFilterChanged,
-    sortingPizzas
+    activeSortFilterChanged
 } = actions;
