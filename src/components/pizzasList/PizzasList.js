@@ -4,11 +4,10 @@ import { createSelector } from '@reduxjs/toolkit';
 
 import { fetchPizzas } from './pizzasSlice';
 import { addPizza } from '../basket/basketSlice';
+import PizzasListItem from '../pizzasListItem/PizzasListItem';
 import Spinner from '../spinner/Spinner';
 
 import './pizzasList.scss';
-import plus from "../../resources/img/plus.png";
-
 
 const PizzasList = () => {
     /* const filteredPizzasSelector = createSelector(
@@ -62,11 +61,13 @@ const PizzasList = () => {
 
     const filteredPizzas = useSelector(filteredPizzasSelector)
     const pizzasLoadingStatus = useSelector(state => state.pizzas.pizzasLoadingStatus);
+    const pizzas = useSelector(state => state.pizzas.pizzas);
     const dispatch = useDispatch();
 
     useEffect (() => {
         dispatch(fetchPizzas());
-    }, []);   
+    }, []); 
+    console.log(pizzas);  
 
     if (pizzasLoadingStatus === "loading") {
         return <Spinner/>;
@@ -75,32 +76,10 @@ const PizzasList = () => {
     }
 
     const renderPizzasList = (arr) => { 
-        return arr.map(item => {
+        return arr.map(({id, ...props}) => {
             return (
-                <div key={item.id} className="pizzasList__item">
-                        <img src={item.imageUrl} alt="pizza" className="pizzasList__item-img" />
-                        <div className="pizzasList__item-title">{item.name}</div>
-                        <div className="pizzasList__item-selectMenu">
-                            <div className="pizzasType">
-                                <button className="pizzasType__item pizzasType__item-active" disabled={!item.types.some(type => type === 0)}>тонкое</button>
-                                <button className="pizzasType__item" disabled={!item.types.some(type => type === 1)}>традиционное</button>
-                            </div>
-                            <div className="pizzasSize">
-                                <button className="pizzasSize__item pizzasSize__item-active" disabled={!item.sizes.some(size => size === 26)}>26 см.</button>
-                                <button className="pizzasSize__item" disabled={!item.sizes.some(size => size === 30)}>30 см.</button>
-                                <button className="pizzasSize__item" disabled={!item.sizes.some(size => size === 40)}>40 см.</button>
-                            </div>
-                        </div>
-                        <div className="pizzasList__item-wrapper">
-                            <div className="pizzasList__item-price">от {item.price}грн</div>
-                            <button className="pizzasList__item-addButton" onClick={() => {console.log(item)}}>
-                                <img src={plus} alt="plus" />
-                                Добавить
-                            </button>
-                        </div>
-                </div>
+                <PizzasListItem key={id} {...props}/> 
             )
-            
         })
     }
     
