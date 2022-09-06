@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addPizza } from '../basket/basketSlice';
 import plus from "../../resources/img/plus.png";
@@ -7,9 +7,11 @@ import plus from "../../resources/img/plus.png";
 import './pizzasListItem.scss';
 
 const PizzasListItem = ({imageUrl, name, types, sizes, price}) => {
+    const basket = useSelector(state => state.basket);
     const [activeType, setActiveType] = useState(types[0]);
     const [activeSize, setActiveSize] = useState(sizes[0]);
     const dispatch = useDispatch();
+    
 
     const pizzasTypes = ['тонкое', 'традиционное'];
     const pizzasSizes = [26, 30, 40];
@@ -88,7 +90,7 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price}) => {
             </div>
             <div className="pizzasList__item-wrapper">
                 <div className="pizzasList__item-price">от {price}грн</div>
-                <button className="pizzasList__item-addButton" onClick={() => {dispatch(addPizza({name, activeType, activeSize, price}))}}>
+                <button className="pizzasList__item-addButton" onClick={() => dispatch(addPizza({name, activeType, activeSize, price}))}>
                     <img src={plus} alt="plus" />
                     Добавить
                 </button>
@@ -98,3 +100,5 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price}) => {
 }
 
 export default PizzasListItem;
+
+/* onClick={() => dispatch(addPizza({name, activeType, activeSize, price}))} */
