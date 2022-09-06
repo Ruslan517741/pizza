@@ -6,7 +6,7 @@ import plus from "../../resources/img/plus.png";
 
 import './pizzasListItem.scss';
 
-const PizzasListItem = ({imageUrl, name, types, sizes, price}) => {
+const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
     const basket = useSelector(state => state.basket);
     const [activeType, setActiveType] = useState(types[0]);
     const [activeSize, setActiveSize] = useState(sizes[0]);
@@ -16,6 +16,7 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price}) => {
     const pizzasTypes = ['тонкое', 'традиционное'];
     const pizzasSizes = [26, 30, 40];
 
+    console.log(id);
     const renderPizzasTypes = (arr) => {
         return arr.map((item, i) => {
             return (
@@ -90,7 +91,7 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price}) => {
             </div>
             <div className="pizzasList__item-wrapper">
                 <div className="pizzasList__item-price">от {price}грн</div>
-                <button className="pizzasList__item-addButton" onClick={() => dispatch(addPizza({name, activeType, activeSize, price}))}>
+                <button className="pizzasList__item-addButton" onClick={() => dispatch(addPizza({imageUrl, name, activeType, activeSize, price, id, pizzasTypes}))}>
                     <img src={plus} alt="plus" />
                     Добавить
                 </button>

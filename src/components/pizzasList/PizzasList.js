@@ -76,9 +76,9 @@ const PizzasList = () => {
     }
 
     const renderPizzasList = (arr) => { 
-        return arr.map(({id, ...props}) => {
+        return arr.map(({...props}, i) => {
             return (
-                <PizzasListItem key={id} {...props}/> 
+                <PizzasListItem key={i} {...props}/> 
             )
         })
     }

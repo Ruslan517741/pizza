@@ -1,9 +1,13 @@
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { addPizza } from '../basket/basketSlice';
+import BasketItem from "../basketItem/BasketItem";
 
 import './basket.scss';
 
-import basket from '../../resources/img/basket.png';
+import basketImg from '../../resources/img/basket.png';
 import pizzaChiz from "../../resources/img/pizzaChiz.png";
 import chick from "../../resources/img/chick.png";
 import shrimps from "../../resources/img/shrimps.png";
@@ -17,6 +21,21 @@ import leftArrow from "../../resources/img/leftArrow.svg";
 
 
 const Basket = () => {
+
+    const basket = useSelector(state => state.basket.basket);
+    const dispatch = useDispatch();
+    console.log(basket);
+
+    const renderBasketItems = (arr) => {
+        return arr.map(({...props}, i) => {
+            console.log('123123123123123123123123123123123123123123123123');
+            return (
+                <BasketItem key={i} {...props}/>
+            )
+        })
+    }
+
+    const elements = renderBasketItems(basket);
     return (
         <div className="basket">
             <Helmet>
@@ -28,7 +47,7 @@ const Basket = () => {
             </Helmet>
             <div className="basket__header">
                 <div className="basket__header-title">
-                    <img src={basket} alt="basket" />
+                    <img src={basketImg} alt="basket" />
                     Корзина
                 </div>
                 <button className="basket__header-clearBasketButton">
@@ -38,7 +57,8 @@ const Basket = () => {
             </div>
             
             <div className="basket__items">
-                <div className="basket__item">
+                {elements}
+                {/* <div className="basket__item">
                     <div className="basket__item-wrapper">
                         <div className="basket__item-pizza">
                             <img src={chick} alt="pizza" />
@@ -109,7 +129,7 @@ const Basket = () => {
                             <img src={cross} alt="cross" />
                         </button>
                     </div>
-                </div>
+                </div> */}
                 <div className="basket__total">
                     <div className="basket__total-amountOfPizzas">Всего пицц: <span>3 шт</span></div>
                     <div className="basket__total-orderPrice">Сумма заказа: <span>900 грн</span></div>
