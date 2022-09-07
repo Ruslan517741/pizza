@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 
 const Page404 = () => {
     return (
-        <div>
+        <div style={{'paddingBottom': '50px'}}>
             <Helmet>
                 <meta
                     name="description"
@@ -14,7 +14,7 @@ const Page404 = () => {
             </Helmet>
             <ErrorMessage/>
             <p style={{'textAlign': 'center', 'fontWeight': 'bold', 'fontSize': '24px'}}>Page doesn't exist</p>
-            <Link style={{'display': 'block', 'textAlign': 'center', 'fontWeight': 'bold', 'fontSize': '24px', 'marginTop': '30px'}} to="/">Back to main page</Link>
+            <Link style={{'display': 'block', 'textAlign': 'center', 'fontWeight': 'bold', 'fontSize': '24px', 'marginTop': '30px', 'marginBottom': '100px'}} to="/">Back to main page</Link>
         </div>
     )
 }

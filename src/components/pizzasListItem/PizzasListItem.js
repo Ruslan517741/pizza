@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addPizza } from '../basket/basketSlice';
 import plus from "../../resources/img/plus.png";
 
-import './pizzasListItem.scss';
-
 const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
     const basket = useSelector(state => state.basket);
     const [activeType, setActiveType] = useState(types[0]);

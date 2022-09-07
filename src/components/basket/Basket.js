@@ -2,20 +2,16 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addPizza } from '../basket/basketSlice';
+import { deletePizza, clearBasket } from '../basket/basketSlice';
 import BasketItem from "../basketItem/BasketItem";
 
 import './basket.scss';
 
 import basketImg from '../../resources/img/basket.png';
-import pizzaChiz from "../../resources/img/pizzaChiz.png";
-import chick from "../../resources/img/chick.png";
-import shrimps from "../../resources/img/shrimps.png";
-import plus from "../../resources/img/plus.png";
-import minus from "../../resources/img/minus.png";
-import cross from "../../resources/img/cross.png";
-import clearBasket from "../../resources/img/clearBasket.svg";
+import clearBasketImg from "../../resources/img/clearBasket.svg";
 import leftArrow from "../../resources/img/leftArrow.svg";
+import emptyBasketImg from '../../resources/img/emptyBasket.png';
+import smile from '../../resources/img/smile.png';
 
 
 
@@ -26,126 +22,71 @@ const Basket = () => {
     const dispatch = useDispatch();
     console.log(basket);
 
+
+
     const renderBasketItems = (arr) => {
         return arr.map(({...props}, i) => {
-            console.log('123123123123123123123123123123123123123123123123');
             return (
                 <BasketItem key={i} {...props}/>
             )
         })
     }
 
+
     const elements = renderBasketItems(basket);
-    return (
-        <div className="basket">
-            <Helmet>
-                <meta
-                    name="description"
-                    content="Basket with your pizzas"
-                    />
-                 <title>Basket</title>   
-            </Helmet>
-            <div className="basket__header">
-                <div className="basket__header-title">
-                    <img src={basketImg} alt="basket" />
-                    Корзина
-                </div>
-                <button className="basket__header-clearBasketButton">
-                    <img src={clearBasket} alt="clearBasket" />
-                    Очистить корзину
-                </button>
-            </div>
-            
-            <div className="basket__items">
-                {elements}
-                {/* <div className="basket__item">
-                    <div className="basket__item-wrapper">
-                        <div className="basket__item-pizza">
-                            <img src={chick} alt="pizza" />
-                            <div className="basket__item-discription">
-                                <div className="basket__item-title">Сырный цыпленок</div>
-                                <div className="basket__item-type">тонкое тесто, 26 см.</div>
-                            </div>
-                        </div>
-                        <div className="basket__item-amount">
-                            <button className="basket__item-signButton">
-                                <img src={minus} alt="minus" />
-                            </button>
-                            <div className="basket__item-number">2</div>
-                            <button className="basket__item-signButton">
-                                <img src={plus} alt="plus" />
-                            </button>
-                        </div>
-                        <div className="basket__item-price">770 грн</div>
-                        <button className="basket__item-close">
-                            <img src={cross} alt="cross" />
-                        </button>
+
+    if (basket.length) {
+        return (
+            <div className="basket">
+                <Helmet>
+                    <meta
+                        name="description"
+                        content="Basket with your pizzas"
+                        />
+                     <title>Basket</title>   
+                </Helmet>
+                <div className="basket__header">
+                    <div className="basket__header-title">
+                        <img src={basketImg} alt="basket" />
+                        Корзина
                     </div>
-                </div>
-                <div className="basket__item">
-                    <div className="basket__item-wrapper">
-                        <div className="basket__item-pizza">
-                            <img src={shrimps} alt="pizza" />
-                            <div className="basket__item-discription">
-                                <div className="basket__item-title">Креветки по-азиатски</div>
-                                <div className="basket__item-type">толстое тесто, 40 см.</div>
-                            </div>
-                        </div>
-                        <div className="basket__item-amount">
-                            <button className="basket__item-signButton">
-                                <img src={minus} alt="minus" />
-                            </button>
-                            <div className="basket__item-number">2</div>
-                            <button className="basket__item-signButton">
-                                <img src={plus} alt="plus" />
-                            </button>
-                        </div>
-                        <div className="basket__item-price">290 грн</div>
-                        <button className="basket__item-close">
-                            <img src={cross} alt="cross" />
-                        </button>
-                    </div>
-                </div>
-                <div className="basket__item">
-                    <div className="basket__item-wrapper">
-                        <div className="basket__item-pizza">
-                            <img src={pizzaChiz} alt="pizza" />
-                            <div className="basket__item-discription">
-                                <div className="basket__item-title">Чизбургер-пицца</div>
-                                <div className="basket__item-type">тонкое тесто, 30 см.</div>
-                            </div>
-                        </div>
-                        <div className="basket__item-amount">
-                            <button className="basket__item-signButton">
-                                <img src={minus} alt="minus" />
-                            </button>
-                            <div className="basket__item-number">2</div>
-                            <button className="basket__item-signButton">
-                                <img src={plus} alt="plus" />
-                            </button>
-                        </div>
-                        <div className="basket__item-price">350 грн</div>
-                        <button className="basket__item-close">
-                            <img src={cross} alt="cross" />
-                        </button>
-                    </div>
-                </div> */}
-                <div className="basket__total">
-                    <div className="basket__total-amountOfPizzas">Всего пицц: <span>3 шт</span></div>
-                    <div className="basket__total-orderPrice">Сумма заказа: <span>900 грн</span></div>
-                </div>
-                <div className="basket__buttons">
-                    <Link to="/" className="basket__buttons-back">
-                        <img src={leftArrow} alt="leftArrow" />
-                        Вернуться назад
-                    </Link>
-                    <button className="basket__buttons-pay">Оплатить сейчас</button>
+                    <button className="basket__header-clearBasketButton" onClick={() => dispatch(clearBasket())}>
+                        <img src={clearBasketImg} alt="clearBasket" />
+                        Очистить корзину
+                    </button>
                 </div>
                 
-
+                <div className="basket__items">
+                    {elements}
+                    <div className="basket__total">
+                        <div className="basket__total-amountOfPizzas">Всего пицц: <span>{basket.length} шт</span></div>
+                        <div className="basket__total-orderPrice">Сумма заказа: <span>900 грн</span></div>
+                    </div>
+                    <div className="basket__buttons">
+                        <Link to="/" className="basket__buttons-back">
+                            <img src={leftArrow} alt="leftArrow" />
+                            Вернуться назад
+                        </Link>
+                        <button className="basket__buttons-pay">Оплатить сейчас</button>
+                    </div>
+                    
+    
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div className='emptyBasket'>
+                <div className="emptyBasket__title">Корзина пустая <img src={smile} alt="smile" /></div>
+                <div className="emptyBasket__prompt">Вероятней всего, вы не заказывали ещё пиццу. <br/>
+    Для того, чтобы заказать пиццу, перейди на главную страницу.</div>
+                <img className="emptyBasket__img" src={emptyBasketImg} alt="Empty Basket"/>
+                <Link to="/" className="emptyBasket__backButton">Вернуться назад</Link>
+    
+            </div>
+        )
+    }
+    
 }
 
 export default Basket;
