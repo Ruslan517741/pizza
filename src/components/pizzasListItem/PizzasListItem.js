@@ -8,13 +8,20 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
     const basket = useSelector(state => state.basket);
     const [activeType, setActiveType] = useState(types[0]);
     const [activeSize, setActiveSize] = useState(sizes[0]);
+    
+    const [amountSelectedPizzas, setAmountSelectedPizzas] = useState(0);
     const dispatch = useDispatch();
     
 
     const pizzasTypes = ['тонкое', 'традиционное'];
     const pizzasSizes = [26, 30, 40];
 
-    console.log(id);
+
+    console.log(basket);
+    /* const countAmountSelectedPizzas = (value) => {
+
+    } */
+
     const renderPizzasTypes = (arr) => {
         return arr.map((item, i) => {
             return (
@@ -42,7 +49,7 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
             )
         });
     }
-    
+    const counter = 1;
     const typeElements = renderPizzasTypes(pizzasTypes);
     const sizeElements = renderPizzasSizes(pizzasSizes);
     return (
@@ -52,44 +59,14 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
             <div className="pizzasList__item-selectMenu">
                 <div className="pizzasType">
                     {typeElements}
-                    {/* <button 
-                        className={`pizzasType__item ${activeType === 0 ? 'pizzasType__item-active' : null}`} 
-                        disabled={!types.some(type => type === 0)}
-                        onClick={() => setActiveType(0)}>
-                            тонкое
-                    </button>
-                    <button 
-                        className={`pizzasType__item ${activeType === 1 ? 'pizzasType__item-active' : null}`} 
-                        disabled={!types.some(type => type === 1)}
-                        onClick={() => setActiveType(1)}>
-                            традиционное
-                    </button> */}
                 </div>
                 <div className="pizzasSize">
                     {sizeElements}
-                    {/* <button 
-                        className={`pizzasSize__item ${activeSize === 26 ? 'pizzasSize__item-active' : null}`} 
-                        disabled={!sizes.some(size => size === 26)}
-                        onClick={() => setActiveSize(26)}>
-                            26 см.
-                    </button>
-                    <button 
-                        className={`pizzasSize__item ${activeSize === 30 ? 'pizzasSize__item-active' : null}`}  
-                        disabled={!sizes.some(size => size === 30)}
-                        onClick={() => setActiveSize(30)}>
-                            30 см.
-                    </button>
-                    <button 
-                        className={`pizzasSize__item ${activeSize === 40 ? 'pizzasSize__item-active' : null}`}  
-                        disabled={!sizes.some(size => size === 40)}
-                        onClick={() => setActiveSize(40)}>
-                            40 см.
-                    </button> */}
                 </div>
             </div>
             <div className="pizzasList__item-wrapper">
                 <div className="pizzasList__item-price">от {price}грн</div>
-                <button className="pizzasList__item-addButton" onClick={() => dispatch(addPizza({imageUrl, name, activeType, activeSize, price, id, pizzasTypes}))}>
+                <button className="pizzasList__item-addButton" onClick={() => dispatch(addPizza({imageUrl, name, activeType, activeSize, price, id, pizzasTypes, counter}))}>
                     <img src={plus} alt="plus" />
                     Добавить
                 </button>
@@ -99,5 +76,3 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
 }
 
 export default PizzasListItem;
-
-/* onClick={() => dispatch(addPizza({name, activeType, activeSize, price}))} */
