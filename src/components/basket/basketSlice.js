@@ -17,10 +17,18 @@ const basketSlice = createSlice({
                 } else {
                     state.basket.forEach((item, i) => {
                         if (item.name === action.payload.name && item.activeType === action.payload.activeType && item.activeSize === action.payload.activeSize) {
-                            state.basket[i].counter = state.basket[i].counter + 1;
+                            state.basket[i].counter += 1;
                         }
                     })
                 }
+            }
+        },
+        plusPizza: (state, action) => {
+            state.basket[state.basket.findIndex(item => item.id === action.payload)].counter += 1;
+        },
+        minusPizza: (state, action) => {
+            if (state.basket[state.basket.findIndex(item => item.id === action.payload)].counter > 1) {
+                state.basket[state.basket.findIndex(item => item.id === action.payload)].counter -= 1;
             }
         },
         deletePizza: (state, action) => {
@@ -38,6 +46,8 @@ const {actions, reducer} = basketSlice;
 export default reducer;
 export const {
     addPizza,
+    plusPizza,
+    minusPizza,
     deletePizza,
     clearBasket
 } = actions;

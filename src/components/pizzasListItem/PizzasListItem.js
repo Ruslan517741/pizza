@@ -49,7 +49,7 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
             )
         });
     }
-    const counter = 1;
+
     const typeElements = renderPizzasTypes(pizzasTypes);
     const sizeElements = renderPizzasSizes(pizzasSizes);
     return (
@@ -66,7 +66,7 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
             </div>
             <div className="pizzasList__item-wrapper">
                 <div className="pizzasList__item-price">от {price}грн</div>
-                <button className="pizzasList__item-addButton" onClick={() => dispatch(addPizza({imageUrl, name, activeType, activeSize, price, id, pizzasTypes, counter}))}>
+                <button className="pizzasList__item-addButton" onClick={() => dispatch(addPizza({imageUrl, name, activeType, activeSize, price, id: `${id}${activeType}${activeSize}`, pizzasTypes, counter: 1}))}>
                     <img src={plus} alt="plus" />
                     Добавить
                 </button>

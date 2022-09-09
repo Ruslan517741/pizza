@@ -20,6 +20,7 @@ const Basket = () => {
 
     const basket = useSelector(state => state.basket.basket);
     const dispatch = useDispatch();
+    
     console.log(basket);
 
 

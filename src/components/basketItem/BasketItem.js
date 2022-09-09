@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { deletePizza } from "../basket/basketSlice";
+import { deletePizza, plusPizza, minusPizza } from "../basket/basketSlice";
 
 import plus from "../../resources/img/plus.png";
 import minus from "../../resources/img/minus.png";
 import cross from "../../resources/img/cross.png";
 
-const BasketItem = ({imageUrl, name, activeType, activeSize, price, id, pizzasTypes}) => {
+const BasketItem = ({imageUrl, name, activeType, activeSize, price, id, pizzasTypes, counter}) => {
     let [amount, setAmount] = useState(1);
     const dispatch = useDispatch();
     
@@ -23,15 +23,15 @@ const BasketItem = ({imageUrl, name, activeType, activeSize, price, id, pizzasTy
                     </div>
                 </div>
                 <div className="basket__item-amount">
-                    <button className="basket__item-signButton" onClick={() => setAmount(amount - 1)}>
+                    <button className="basket__item-signButton" onClick={() => dispatch(minusPizza(id))}>
                         <img src={minus} alt="minus" />
                     </button>
-                    <div className="basket__item-number">{amount}</div>
-                    <button className="basket__item-signButton" onClick={() => setAmount(amount + 1)}>
+                    <div className="basket__item-number">{counter}</div>
+                    <button className="basket__item-signButton" onClick={() => dispatch(plusPizza(id))}>
                         <img src={plus} alt="plus" />
                     </button>
                 </div>
-                <div className="basket__item-price">{price * amount} грн</div>
+                <div className="basket__item-price">{price * counter} грн</div>
                 <button className="basket__item-close" onClick={() => dispatch(deletePizza(id))}>
                     <img src={cross} alt="cross" />
                 </button>
