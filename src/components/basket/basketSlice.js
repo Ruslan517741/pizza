@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    basket: []
+    basket: [],
+    amountOfPizzas: 0,
+    totalPrice: 0
 }
 
 const basketSlice = createSlice({
@@ -36,6 +38,12 @@ const basketSlice = createSlice({
         },
         clearBasket: (state) => {
             state.basket = [];
+        },
+        changeAmountOfPizzas: (state, action) => {
+            state.amountOfPizzas = action.payload;
+        },
+        changeTotalPrice: (state, action) => {
+            state.totalPrice = action.payload;
         }
 
     },
@@ -49,5 +57,7 @@ export const {
     plusPizza,
     minusPizza,
     deletePizza,
-    clearBasket
+    clearBasket,
+    changeAmountOfPizzas,
+    changeTotalPrice
 } = actions;

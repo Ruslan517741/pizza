@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { deletePizza, plusPizza, minusPizza } from "../basket/basketSlice";
@@ -8,9 +7,7 @@ import minus from "../../resources/img/minus.png";
 import cross from "../../resources/img/cross.png";
 
 const BasketItem = ({imageUrl, name, activeType, activeSize, price, id, pizzasTypes, counter}) => {
-    let [amount, setAmount] = useState(1);
     const dispatch = useDispatch();
-    
 
     return (
         <div className="basket__item">

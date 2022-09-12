@@ -9,18 +9,13 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
     const [activeType, setActiveType] = useState(types[0]);
     const [activeSize, setActiveSize] = useState(sizes[0]);
     
-    const [amountSelectedPizzas, setAmountSelectedPizzas] = useState(0);
     const dispatch = useDispatch();
     
 
     const pizzasTypes = ['тонкое', 'традиционное'];
     const pizzasSizes = [26, 30, 40];
 
-
     console.log(basket);
-    /* const countAmountSelectedPizzas = (value) => {
-
-    } */
 
     const renderPizzasTypes = (arr) => {
         return arr.map((item, i) => {

@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { deletePizza, clearBasket } from '../basket/basketSlice';
+import { clearBasket, changeAmountOfPizzas, changeTotalPrice } from '../basket/basketSlice';
 import BasketItem from "../basketItem/BasketItem";
 
 import './basket.scss';
@@ -19,6 +19,7 @@ import smile from '../../resources/img/smile.png';
 const Basket = () => {
 
     const basket = useSelector(state => state.basket.basket);
+
     const dispatch = useDispatch();
     
     console.log(basket);
@@ -33,6 +34,14 @@ const Basket = () => {
         })
     }
 
+    const countAmountOfPizzas = (arr) => {
+        changeAmountOfPizzas(arr.reduce((total, value) => total + value.counter, 0));
+        return arr.reduce((total, value) => total + value.counter, 0);
+    }
+
+    const countTotalPrice = (arr) => {
+        return arr.reduce((total, value) => total + value.counter * value.price, 0);
+    }
 
     const elements = renderBasketItems(basket);
 
@@ -60,8 +69,8 @@ const Basket = () => {
                 <div className="basket__items">
                     {elements}
                     <div className="basket__total">
-                        <div className="basket__total-amountOfPizzas">Всего пицц: <span>{basket.length} шт</span></div>
-                        <div className="basket__total-orderPrice">Сумма заказа: <span>900 грн</span></div>
+                        <div className="basket__total-amountOfPizzas">Всего пицц: <span>{countAmountOfPizzas(basket)} шт</span></div>
+                        <div className="basket__total-totalPrice">Сумма заказа: <span>{countTotalPrice(basket)}</span></div>
                     </div>
                     <div className="basket__buttons">
                         <Link to="/" className="basket__buttons-back">
