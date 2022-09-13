@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 
 import { fetchPizzas } from './pizzasSlice';
-import { addPizza } from '../basket/basketSlice';
 import PizzasListItem from '../pizzasListItem/PizzasListItem';
 import Spinner from '../spinner/Spinner';
 
@@ -61,13 +60,11 @@ const PizzasList = () => {
 
     const filteredPizzas = useSelector(filteredPizzasSelector)
     const pizzasLoadingStatus = useSelector(state => state.pizzas.pizzasLoadingStatus);
-    const pizzas = useSelector(state => state.pizzas.pizzas);
     const dispatch = useDispatch();
 
     useEffect (() => {
         dispatch(fetchPizzas());
     }, []); 
-    console.log(pizzas);  
 
     if (pizzasLoadingStatus === "loading") {
         return <Spinner/>;

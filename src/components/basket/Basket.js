@@ -1,8 +1,9 @@
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { clearBasket, changeAmountOfPizzas, changeTotalPrice } from '../basket/basketSlice';
+import { clearBasket, changeAmountOfPizzasAndTotalPrice } from '../basket/basketSlice';
 import BasketItem from "../basketItem/BasketItem";
 
 import './basket.scss';
@@ -13,18 +14,16 @@ import leftArrow from "../../resources/img/leftArrow.svg";
 import emptyBasketImg from '../../resources/img/emptyBasket.png';
 import smile from '../../resources/img/smile.png';
 
-
-
-
 const Basket = () => {
-
     const basket = useSelector(state => state.basket.basket);
+    const amountOfPizzas = useSelector(state => state.basket.amountOfPizzas);
+    const totalPrice = useSelector(state => state.basket.totalPrice);
 
     const dispatch = useDispatch();
-    
-    console.log(basket);
 
-
+    useEffect(() => {
+        dispatch(changeAmountOfPizzasAndTotalPrice());
+    }, [basket]);
 
     const renderBasketItems = (arr) => {
         return arr.map(({...props}, i) => {
@@ -32,15 +31,6 @@ const Basket = () => {
                 <BasketItem key={i} {...props}/>
             )
         })
-    }
-
-    const countAmountOfPizzas = (arr) => {
-        changeAmountOfPizzas(arr.reduce((total, value) => total + value.counter, 0));
-        return arr.reduce((total, value) => total + value.counter, 0);
-    }
-
-    const countTotalPrice = (arr) => {
-        return arr.reduce((total, value) => total + value.counter * value.price, 0);
     }
 
     const elements = renderBasketItems(basket);
@@ -69,8 +59,8 @@ const Basket = () => {
                 <div className="basket__items">
                     {elements}
                     <div className="basket__total">
-                        <div className="basket__total-amountOfPizzas">Всего пицц: <span>{countAmountOfPizzas(basket)} шт</span></div>
-                        <div className="basket__total-totalPrice">Сумма заказа: <span>{countTotalPrice(basket)}</span></div>
+                        <div className="basket__total-amountOfPizzas">Всего пицц: <span>{amountOfPizzas} шт</span></div>
+                        <div className="basket__total-totalPrice">Сумма заказа: <span>{totalPrice}</span></div>
                     </div>
                     <div className="basket__buttons">
                         <Link to="/" className="basket__buttons-back">

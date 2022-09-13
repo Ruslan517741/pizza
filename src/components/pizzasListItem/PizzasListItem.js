@@ -11,11 +11,8 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
     
     const dispatch = useDispatch();
     
-
     const pizzasTypes = ['тонкое', 'традиционное'];
     const pizzasSizes = [26, 30, 40];
-
-    console.log(basket);
 
     const renderPizzasTypes = (arr) => {
         return arr.map((item, i) => {

@@ -39,14 +39,11 @@ const basketSlice = createSlice({
         clearBasket: (state) => {
             state.basket = [];
         },
-        changeAmountOfPizzas: (state, action) => {
-            state.amountOfPizzas = action.payload;
-        },
-        changeTotalPrice: (state, action) => {
-            state.totalPrice = action.payload;
+        changeAmountOfPizzasAndTotalPrice: (state) => {
+            state.amountOfPizzas = state.basket.reduce((total, value) => total + value.counter, 0);
+            state.totalPrice = state.basket.reduce((total, value) => total + value.counter * value.price, 0);
         }
-
-    },
+    }
 });
 
 const {actions, reducer} = basketSlice;
@@ -58,6 +55,5 @@ export const {
     minusPizza,
     deletePizza,
     clearBasket,
-    changeAmountOfPizzas,
-    changeTotalPrice
+    changeAmountOfPizzasAndTotalPrice
 } = actions;
