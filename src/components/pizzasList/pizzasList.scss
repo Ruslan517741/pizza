@@ -72,7 +72,14 @@
             line-height: 19px;
             color: #EB5A1E;
             cursor: pointer;
-            img {
+            &:hover {
+                background: #EB5A1E;
+                color: #FFFFFF;
+                svg path {
+                    fill: #FFFFFF;
+                }
+            }
+            svg {
                 margin-right: 8px;
             }
         }

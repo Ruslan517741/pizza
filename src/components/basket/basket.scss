@@ -28,6 +28,9 @@
             line-height: 19px;
             color: #B6B6B6;
             cursor: pointer;
+            &:hover {
+                color: #f53030;
+            }
             img {
                 margin: 0 7px 5px 0;
             }
@@ -84,7 +87,14 @@
             border: 2px solid #FE5F1E;
             border-radius: 100%;
             cursor: pointer;
-            img {
+            &:hover {
+                background: #EB5A1E;
+                color: #FFFFFF;
+                svg path {
+                    fill: #FFFFFF;
+                }
+            }
+            svg {
                 width: 9.6px;
             }
         }
@@ -103,7 +113,7 @@
             line-height: 27px;
             letter-spacing: 0.01em;
         }
-        &-close {
+        &-remove {
             width: 32px;
             height: 32px;
             left: 1139px;
@@ -112,6 +122,9 @@
             border: 2px solid #D7D7D7;
             border-radius: 100%;
             cursor: pointer;
+            &:hover {
+                background: #282828;
+            }
             img {
                 width: 10.6px;
             }
@@ -164,6 +177,9 @@
             color: #CACACA;
             text-decoration: none;
             cursor: pointer;
+            &:hover {
+                background: #282828;
+            } 
             img {
                 margin-right: 10px;
             }
@@ -233,5 +249,10 @@
         text-align: center;
         letter-spacing: 0.015em;
         color: #FFFFFF;
+        &:hover {
+            background: #FFFFFF;
+            color: #282828;
+            border: 2px solid #282828;
+        }
     }
 }
