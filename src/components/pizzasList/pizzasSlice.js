@@ -25,6 +25,12 @@ const pizzasSlice = createSlice({
         },
         activeSortFilterChanged: (state, action) => {
             state.activeSortFilter = action.payload;
+        },
+        changeActiveType: (state, action) => {
+            state.pizzas[[state.pizzas.findIndex(item => item.id === action.payload.id)]].activeType = action.payload.activeType; 
+        },
+        changeActiveSize: (state, action) => {
+            state.pizzas[[state.pizzas.findIndex(item => item.id === action.payload.id)]].activeSize = action.payload.activeSize; 
         }
     },
     extraReducers: (builder) => {
@@ -44,5 +50,7 @@ const {actions, reducer} = pizzasSlice;
 export default reducer;
 export const {
     activeFilterChanged,
-    activeSortFilterChanged
+    activeSortFilterChanged,
+    changeActiveType,
+    changeActiveSize
 } = actions;

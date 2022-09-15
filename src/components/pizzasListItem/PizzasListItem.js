@@ -1,12 +1,9 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { changeActiveType, changeActiveSize } from '../pizzasList/pizzasSlice';
 import { addPizza } from '../basket/basketSlice';
 
-const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
-    const basket = useSelector(state => state.basket);
-    const [activeType, setActiveType] = useState(types[0]);
-    const [activeSize, setActiveSize] = useState(sizes[0]);
+const PizzasListItem = ({imageUrl, name, types, sizes, price, activeType = types[0], activeSize = sizes[0], id}) => {
     
     const dispatch = useDispatch();
     
@@ -37,7 +34,7 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
                     key={i}
                     className={`pizzasType__item ${activeType === i ? 'pizzasType__item-active' : null}`} 
                     disabled={!types.some(type => type === i)}
-                    onClick={() => setActiveType(i)}>
+                    onClick={() => dispatch(changeActiveType({id, activeType: i}))}>
                         {item}
                 </button>
             )
@@ -51,7 +48,7 @@ const PizzasListItem = ({imageUrl, name, types, sizes, price, id}) => {
                     key={i}
                     className={`pizzasSize__item ${activeSize === item ? 'pizzasSize__item-active' : null}`} 
                     disabled={!sizes.some(size => size === item)}
-                    onClick={() => setActiveSize(item)}>
+                    onClick={() => dispatch(changeActiveSize({id, activeSize: item}))}>
                         {item} см
                 </button>
             )
