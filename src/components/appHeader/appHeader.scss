@@ -67,3 +67,40 @@
 
     color: #FFFFFF;
 }
+
+@media (max-width: 768px) {
+    .appHeader {
+        padding: 50px 20px 35px 30px;
+    }
+    .header__button {
+        width: 140px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .appHeader {
+        padding: 26px 18px 10px 21px;
+    }
+    .logo {
+        &__title {
+            font-size: 21px;
+        }
+        &__motto {
+            font-size: 13px;
+            line-height: 15px;
+        }
+    }
+    .price {
+        font-size: 15px;
+        line-height: 15px;
+    }
+    .separator {
+        margin: 0 7px;
+    }
+    .goods {
+        font-size: 15px;
+        line-height: 15px;
+        margin-left: 6px;
+    }
+}
