@@ -165,3 +165,19 @@
         }
     }
 }
+
+@media (max-width: 393px) {
+    .pizzaFilters {
+        align-items: center;
+        &__buttons {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        &__button {
+            margin: 4px 10px;
+        }
+        &__panel {
+            justify-content: center;
+        }
+    }
+}
