@@ -1,0 +1,12 @@
+.spinner {
+    width: 500px;
+    margin: 0 auto;
+    background: none;
+    display: block;
+}
+
+@media (max-width: 393px) {
+    .spinner {
+        width: 260px;
+    }
+}

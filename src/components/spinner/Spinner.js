@@ -1,9 +1,10 @@
 import spinner from "../../resources/img/spinner.gif";
+import './spinner.scss';
 
 const Spinner = () => {
     return (
         <div className="spinner" role="status">
-            <img src={spinner} alt="spinner" className="spinner" style={{width:'500px', margin: '0 auto', background: 'none', display: 'block'}}/>
+            <img src={spinner} alt="spinner" className="spinner" />
         </div>
     )
 }

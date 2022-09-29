@@ -37,3 +37,9 @@
         max-width: 518px;
     }
 }
+
+@media (max-width: 393px) {
+    .app {
+        padding: 15px;
+    }
+}
