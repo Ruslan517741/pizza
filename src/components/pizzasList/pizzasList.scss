@@ -163,6 +163,18 @@
     }
 }
 
+@media (max-width: 830px) {
+    .pizzasList {
+        padding: 0px 20px 90px 20px;
+        &__typeFilter {
+            font-size: 30px;
+        }
+        &__items {
+            grid-template-columns: repeat(2, 280px);
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .pizzasList {
         padding: 0px 20px 90px 20px;
