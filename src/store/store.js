@@ -18,6 +18,7 @@ const rootReducer = combineReducers({pizzas, basket});
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['pizzas']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
