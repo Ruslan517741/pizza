@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/pizza/static/css/main.bbb0d550.css",
-    "main.js": "/pizza/static/js/main.9b8f60c0.js",
+    "main.css": "/pizza/static/css/main.0d389b8d.css",
+    "main.js": "/pizza/static/js/main.12e2349e.js",
     "static/media/spinner.gif": "/pizza/static/media/spinner.192e893fb019712dcea3.gif",
     "static/media/emptyBasket.png": "/pizza/static/media/emptyBasket.5d135f9e8394c78608a5.png",
     "static/media/error404.jpg": "/pizza/static/media/error404.d44da75c7d6693893a09.jpg",
@@ -9,11 +9,11 @@
     "static/media/clearBasket.svg": "/pizza/static/media/clearBasket.6a41b04d7502dc5486bd1c678874e802.svg",
     "index.html": "/pizza/index.html",
     "static/media/leftArrow.svg": "/pizza/static/media/leftArrow.fc29ec73901b6f8218c91a0d69592416.svg",
-    "main.bbb0d550.css.map": "/pizza/static/css/main.bbb0d550.css.map",
-    "main.9b8f60c0.js.map": "/pizza/static/js/main.9b8f60c0.js.map"
+    "main.0d389b8d.css.map": "/pizza/static/css/main.0d389b8d.css.map",
+    "main.12e2349e.js.map": "/pizza/static/js/main.12e2349e.js.map"
   },
   "entrypoints": [
-    "static/css/main.bbb0d550.css",
-    "static/js/main.9b8f60c0.js"
+    "static/css/main.0d389b8d.css",
+    "static/js/main.12e2349e.js"
   ]
 }
