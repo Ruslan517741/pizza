@@ -1,0 +1,22 @@
+.error404 {
+    display: block;
+    width: 500px;
+    height: 500px;
+    /* objectFit: contain; */
+    margin: 0 auto;
+}
+
+@media (max-width: 620px) {
+    .error404 {
+        width: 400px;
+        height: 375px;
+    }
+}
+
+@media (max-width: 475px) {
+    .error404 {
+        width: 260px;
+        height: 240px;
+    }   
+}
+
