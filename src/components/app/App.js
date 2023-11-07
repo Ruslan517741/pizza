@@ -17,6 +17,7 @@ const App = () => {
                     <main>
                         <Routes>
                             <Route path='/' element={<MainPage/>}/>
+                            <Route path='/pizza' element={<MainPage/>}/>
                             <Route path='/Basket' element={<Basket/>}/> 
                             <Route path="*" element={<Page404/>}/>                      
                         </Routes>
